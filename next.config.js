@@ -3,11 +3,15 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
-  output: 'export',
-  distDir: 'out',
   images: {
     unoptimized: true
   }
+}
+
+// Enable static export only in production
+if (process.env.NODE_ENV === 'production') {
+  nextConfig.output = 'export';
+  nextConfig.distDir = 'out';
 }
 
 module.exports = nextConfig
